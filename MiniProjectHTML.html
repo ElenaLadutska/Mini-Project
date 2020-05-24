@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="MPcssSecondVar.css" type="text/css" rel="stylesheet"> 
+    <title>TodoList</title>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Welcome to your TodoList
+        </h1>
+        <div class="mainContent">
+            <div class="todo">
+                <h1>
+                    To do
+                </h1>
+                <p>amount of tasks - </p>
+                <div class="todoTasks">
+                    <form class="todoForm">  
+                    <div class="todoFormsTasks">
+                    
+                        <div class="addedTodoTask">
+                            <input type="text" class="tasksText"
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;">
+
+                            <input type="date" class="taskDate">
+
+                            <button class="movingTaskInNextColumn" 
+                            onclick="placeTaskInProgress(this)"
+                            type="button"
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;
+                            background: transparent;
+                            border: 1px solid transparent;
+                            margin-left: 25%;"
+                            >
+                            &#8594
+                            </button>
+                            <button class='movingTaskInTodo'
+                            onclick="placeTaskInTodo(this)"
+                            style="font-family: 'DM Mono'; font-size: small;
+                            color: purple;
+                            background: transparent;
+                            border: 1px solid transparent;"
+                            >
+                            &#8634;</button>
+
+                            
+                            <button class="delete"
+                            onclick="deleteTask(this)"
+                            type="button"
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;
+                            background: transparent;
+                            border: 1px solid transparent;
+                            ">
+                            &#10007
+                            </button>
+                            
+                        </div> 
+
+
+                    </div>
+                        <div class="newTodoTask">
+                            <input type="text" class="newTask"
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;">
+
+                            <input type="date" class="myDate"
+                            style= "background: transparent;
+                            border: 1px solid transparent";>
+
+                            <button name="add"  
+                                onclick="createTodoTask()" 
+                                type="button" 
+                                style="font-family: 'DM Mono'; font-size: inherit;
+                                color: purple;
+                                background: transparent;
+                                border: 1px solid transparent;
+                                margin-left: 18%;">
+                                &#9998; Add task
+                            </button>
+                            
+                        </div>
+                        
+                            <button class="clear" 
+                            onclick="clearAllTasks('todoFormsTasks')"
+                            type="button" 
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;
+                            background: transparent;
+                            border: 1px solid transparent;">
+                            Clear all
+                            </button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="progress">
+                <h1>
+                    In progress
+                </h1>
+                <p>amount of tasks - </p>
+
+                <div class="progressTasks">
+                    <form>
+                    <div class="progressFormsTasks">
+
+                        <div class="addedProgressTask"><input type="text" >
+                            <button name="movingTaskInNextColumn" 
+                            type="button">&#8594</button>
+                            <button name="delete" type="button">&#10007</button>
+                        </div>
+                </div>
+
+                        <button class="clear" type="button" 
+                        onclick="clearAllTasks('progressFormsTasks')"
+                        style="font-family: 'DM Mono'; font-size: inherit;
+                        color: purple;
+                        background: transparent;
+                        border: 1px solid transparent;
+                        ">
+                        Clear all
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="done">
+                <h1>
+                    Done
+                </h1>
+                <p>amount of tasks - </p>
+
+                <div class="doneTasks">
+                    <form>
+                    <div class="doneFormsTasks">
+                            <div class="addedDoneTask"><input type="text" >
+                                <button name="movingTaskInNextColumn"
+                                type="button" >&#10003</button>
+                                <button name='movingTaskInTodo'>In todo</button>
+                                <button name="delete" type="button">&#10007</button>
+                            </div>
+                    </div>
+
+                        <button class="clear" type="button" 
+                            onclick="clearAllTasks('doneFormsTasks')"
+                            style="font-family: 'DM Mono'; font-size: inherit;
+                            color: purple;
+                            background: transparent;
+                            border: 1px solid transparent;">
+                            Clear all
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div id="my_modal" class="modal">
+            <div class="modal_content">
+              <span class="close_modal_window">×</span>
+              <h1>Attention!</h1>
+              <p>I wonder if you really want to delete the task?</p>
+              <div class="buttons">
+                  <button class="btn_yes"
+                      style="color:white;
+                      font-family: 'DM Mono'; font-size: inherit;">
+                      Yes
+                  </button>
+                  <button class="btn_no"
+                      style="color:white;
+                      font-family: 'DM Mono'; font-size: inherit;">
+                      No
+                  </button>
+              </div>
+            </div>
+        </div>
+
+        
+</div>
+
+<script src="MPscript.js" type ="text/javascript"></script>
+</body>
+</html>
