@@ -52,6 +52,16 @@ let todoTaskInputText = document.getElementsByClassName('newTask')[0].value;
 if(todoTaskInputText=='' || dateOfTask=='')
   {
     event.preventDefault();
+
+    if(todoTaskInputText=='')
+    {
+      alert('Введите текст задачи');
+    }
+    else
+    {
+      alert('Выберите дату выполнения');
+    }
+
   }
   else
   {
@@ -68,6 +78,7 @@ if(todoTaskInputText=='' || dateOfTask=='')
       document.getElementsByClassName('myDate')[0].value='';
       todoTaskElement.getElementsByClassName ("tasksText")[0].innerHTML=todoTaskInputText;
       document.getElementsByClassName('newTask')[0].value='';
+      
       updateTodoTaskCountText();
 
 }
@@ -87,7 +98,8 @@ event.preventDefault();
     todoTask.getElementsByClassName('movingTaskInNextColumn')[0].innerHTML='&#8594';
     todoTask.getElementsByClassName('movingTaskInNextColumn')[0].setAttribute('onclick','placeTaskInProgress(this)');
     todoTask.getElementsByClassName('movingTaskInTodo')[0].remove();
-  
+    todoTask.getElementsByClassName('delete')[0].hidden=false;
+    
   } 
   updateTodoTaskCountText();
   updateProgressTaskCountText();
@@ -108,8 +120,7 @@ function placeTaskInDone(elem)
   doneTask.getElementsByClassName("movingTaskInTodo")[0].setAttribute('onclick','placeTaskInTodo(this)');
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].innerHTML='&#10003';
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].setAttribute('onclick','deleteTask(this)');
-
-
+  doneTask.getElementsByClassName('delete')[0].hidden=true;
   updateProgressTaskCountText();
   updateDoneTaskCountText();
  }
@@ -125,6 +136,7 @@ function placeTaskInProgress(elem)
   
     elem.parentElement.remove();
     progressTask.getElementsByClassName("movingTaskInNextColumn")[0].setAttribute('onclick','placeTaskInDone(this)');
+    progressTask.getElementsByClassName('delete')[0].hidden=false;
     
     updateTodoTaskCountText();
     updateProgressTaskCountText();
