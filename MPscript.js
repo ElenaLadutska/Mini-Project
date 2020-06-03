@@ -23,6 +23,8 @@ paragraphInProgress.innerHTML+=amountOfProgressTasks.length;
 let paragraphInDone=document.querySelector('div.container div.mainContent div.done p');
 paragraphInDone.innerHTML+=amountOfDoneTasks.length;
 
+
+
 function updateTodoTaskCountText()
 {
   paragraphInTodo.innerHTML='amount of tasks'+' - '+amountOfTodoTasks.length;
@@ -44,47 +46,32 @@ function addToDoTask(todoTaskElement)
 
 function createTodoTask()
 {
-  if(document.getElementsByClassName('addedTodoTask').length<6)
-  {
-    if(document.getElementsByClassName('addedTodoTask').length>0)
-    {
-      todoTaskElement=document.getElementsByClassName('addedTodoTask')[0].cloneNode(true);
-      addToDoTask(todoTaskElement);
-    }
-    else
-    {
-      addToDoTask(todoTaskElement);
-    }
-    let dateOfTask=document.getElementsByClassName('myDate')[0].value;
-    todoTaskElement.getElementsByClassName("taskDate")[0].value=dateOfTask;
-    document.getElementsByClassName('myDate')[0].value='';
-    let todoTaskInputText = document.getElementsByClassName('newTask')[0].value;
-    todoTaskElement.getElementsByClassName ("tasksText")[0].value=todoTaskInputText;
-    console.log(todoTaskInputText);
+let dateOfTask=document.getElementsByClassName('myDate')[0].value;
+let todoTaskInputText = document.getElementsByClassName('newTask')[0].value;
 
-    document.getElementsByClassName('newTask')[0].value='';
-    updateTodoTaskCountText();
+if(todoTaskInputText=='' || dateOfTask=='')
+  {
+    event.preventDefault();
   }
   else
   {
-    modal.style.display='block';
-    document.querySelector('div.container div.modal div.modal_content p').innerHTML='You can not add more than 6 tasks';
-    document.querySelector('div.container div.modal div.modal_content button.btn_yes').innerHTML='Okay';
-    document.getElementsByClassName('btn_no')[0].hidden=true;
-    btnYes.onclick=function()
-    {
-    modal.style.display = "none";
-    document.querySelector('div.container div.modal div.modal_content p').innerHTML='I wonder if you really want to delete the task?';
-    document.querySelector('div.container div.modal div.modal_content button.btn_yes').innerHTML='Yes';
-    document.getElementsByClassName('btn_no')[0].hidden=false; 
-    } 
-    span.onclick = function () 
-    {
-    modal.style.display = "none";
-    document.querySelector('div.container div.modal div.modal_content p').innerHTML='I wonder if you really want to delete the task?';
-    document.getElementsByClassName('btn_no')[0].hidden=false; 
-    }
-  }
+      if(document.getElementsByClassName('addedTodoTask').length>0)
+      {
+        todoTaskElement=document.getElementsByClassName('addedTodoTask')[0].cloneNode(true);
+        addToDoTask(todoTaskElement);
+      }
+      else
+      {
+        addToDoTask(todoTaskElement);
+      }
+      todoTaskElement.getElementsByClassName("taskDate")[0].value=dateOfTask;
+      document.getElementsByClassName('myDate')[0].value='';
+      todoTaskElement.getElementsByClassName ("tasksText")[0].innerHTML=todoTaskInputText;
+      document.getElementsByClassName('newTask')[0].value='';
+      updateTodoTaskCountText();
+
+}
+  
 
 }
 
@@ -99,6 +86,8 @@ event.preventDefault();
     elem.parentElement.remove();
     todoTask.getElementsByClassName('movingTaskInNextColumn')[0].innerHTML='&#8594';
     todoTask.getElementsByClassName('movingTaskInNextColumn')[0].setAttribute('onclick','placeTaskInProgress(this)');
+    todoTask.getElementsByClassName('movingTaskInTodo')[0].remove();
+  
   } 
   updateTodoTaskCountText();
   updateProgressTaskCountText();
@@ -112,9 +101,16 @@ function placeTaskInDone(elem)
   doneTask.className="addedDoneTask";
   document.getElementsByClassName('doneFormsTasks')[0].appendChild(doneTask);
   elem.parentElement.remove();
+  let movingButton=document.createElement('button');
+  movingButton.className='movingTaskInTodo';
+  movingButton.innerHTML='&#8634';
+  doneTask.append(movingButton);
   doneTask.getElementsByClassName("movingTaskInTodo")[0].setAttribute('onclick','placeTaskInTodo(this)');
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].innerHTML='&#10003';
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].setAttribute('onclick','deleteTask(this)');
+
+  // console.log(doneTask.innerHTML);
+
   updateProgressTaskCountText();
   updateDoneTaskCountText();
  }

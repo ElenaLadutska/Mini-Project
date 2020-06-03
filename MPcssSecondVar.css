@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@500;600;700&&display=swap');
 .container
 {
-width: 100vw;
-background:linear-gradient(to top left, purple, white);
+width: 100%;
+/* background:linear-gradient(to top left, purple, white); */
 
 }
 .mainContent
@@ -22,77 +23,118 @@ align-items: center;
 justify-content: TOP;
 margin-top: 2%;
 }
+.progressForm,.doneForm
+{
+width: 100%;
+}
+.todoForm
+{
+width: 100%;
+/* max-height: 90%;
+overflow-y: scroll;
+scroll-behavior: smooth;
+padding-right: 2%; */
+}
+.todoFormsTasks
+{
+width: 100%;
+max-height: 65%;
+overflow-y: scroll;
+scroll-behavior: smooth;
+padding-right: 2%;
+}
 
 
-.addedTodoTask,.addedProgressTask,.addedDoneTask,.newTodoTask
+.addedTodoTask,.addedProgressTask,.addedDoneTask
 {
 display: flex;
 flex-wrap:wrap;
 width: 100%;
 color: #f5f5f5;
-border-bottom: 2px solid purple;
-
+border: 1px solid purple;
+margin-bottom: 2%;
+/* padding: 1%; */
 }
+
+.newTodoTask
+{
+position: absolute;
+top: 77%;
+display: flex;
+flex-wrap:wrap;
+width: 25%;
+color: #f5f5f5;
+border-bottom: 2px solid purple;
+}
+
 .tasksText
 {
+width: 100%;
 border-bottom: 1px solid purple;
 border-top: transparent;
 border-left: transparent;
 border-right: transparent;
 background: transparent;
 margin-top: 3%;
+font-family: 'Yanone Kaffeesatz'; 
+font-size: 120%;
+color: purple;
 }
-.taskDate
+.taskDate,.myDate
 {
-border-bottom:none;
-border-top: transparent;
-border-left: transparent;
-border-right: transparent;
+font-family: 'Yanone Kaffeesatz'; 
+font-size: smaller;
+width: 65%;
+border: 1px solid purple;
 background: transparent;
 margin-top: 4%;
 }
 
 .newTask
 {
+width: 100%;
 border-bottom: 1px solid purple;
 border-top: transparent;
 border-left: transparent;
 border-right: transparent;
 background: transparent;
 margin-top: 4%;
-
+font-family: 'Yanone Kaffeesatz'; 
+font-size:120%;
+color: purple;
 }
 
 .todoTasks,.progressTasks,.doneTasks
 {
 display: flex;
-width: 20vw;
-height: 35vw;
+width: 80%;
+height: 70vh; 
 border: 1px solid purple;
 padding: 3%;
-
 }
 
-.clear
-{
-position: absolute;
-bottom: 3%;
-}
+
 
 h1 
 {
 color:  purple;
-font-family: 'DM Mono';
+font-family: 'Yanone Kaffeesatz';
+font-size: 250%;
 margin: 0;
 }
 
 p
 {
 color: purple;
-font-family: 'DM Mono';
-font-size: larger;
+font-family: 'Yanone Kaffeesatz';
+font-size: 150%;
 }
 
+.addedTodoTask p, .newTodoTask p,.addedProgressTask p,.addedDoneTask p
+{
+font-size: 100%;
+color: rgb(184, 118, 184);
+}
 .modal
 {
 display: none;
@@ -130,12 +172,90 @@ cursor: pointer;
 }
 .btn_yes
 {
-background:linear-gradient(rgb(112, 221, 112),green) ;
-border:1px solid green;
+color: green;
+font-family: 'Yanone Kaffeesatz'; font-size: inherit;
 }
 
 .btn_no
 {
+color: red;
+font-family: 'Yanone Kaffeesatz'; font-size: inherit;
+}
+.btn_yes:hover
+{
+background:linear-gradient(rgb(112, 221, 112),green) ;
+border:1px solid green;
+color:white;
+}
+.btn_no:hover
+{
 background: linear-gradient(rgb(228, 118, 118),red);
 border: 1px solid red;
+color:white;
+}
+.btn_yes:active,.btn_no:active,
+.btn_yes:focus,.btn_no:focus
+{
+outline: none;
+}
+.add
+{
+font-family: 'Yanone Kaffeesatz'; font-size: inherit;
+color: purple;
+background: transparent;
+border: 1px solid transparent;
+margin-left: 15%;
+}
+
+.add:hover, .clear:hover,.delete:hover,.movingTaskInNextColumn:hover,.movingTaskInNextColumn:hover,.movingTaskInTodo:hover
+{
+background-color: purple;
+color: white;
+}
+
+.add:active, .clear:active,.delete:active,.movingTaskInNextColumn:active,.movingTaskInNextColumn:active,.movingTaskInTodo:active,
+.add:focus, .clear:focus,.delete:focus,.movingTaskInNextColumn:focus,.movingTaskInNextColumn:focus,.movingTaskInTodo:focus
+{
+outline: none;
+}
+
+.clear
+{
+
+position: absolute;
+bottom:5%;
+font-family: 'Yanone Kaffeesatz'; 
+font-size: inherit;
+color: purple;
+background: transparent;
+border: 1px solid transparent;
+}
+
+
+.movingTaskInNextColumn
+{
+font-family: 'Yanone Kaffeesatz'; 
+font-size: inherit;
+color: purple;
+background: transparent;
+border: 1px solid transparent;
+/* margin-left: 5%; */
+}
+
+.movingTaskInTodo
+{
+font-family: 'Yanone Kaffeesatz';
+font-size: small;
+color: purple;
+background: transparent;
+border: 1px solid transparent; 
+}
+
+.delete
+{
+font-family: 'Yanone Kaffeesatz';
+font-size: inherit;
+color: purple;
+background: transparent;
+border: 1px solid transparent;
 }
