@@ -109,7 +109,6 @@ function placeTaskInDone(elem)
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].innerHTML='&#10003';
   doneTask.getElementsByClassName('movingTaskInNextColumn')[0].setAttribute('onclick','deleteTask(this)');
 
-  // console.log(doneTask.innerHTML);
 
   updateProgressTaskCountText();
   updateDoneTaskCountText();
